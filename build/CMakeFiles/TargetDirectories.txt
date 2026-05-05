@@ -1,0 +1,15 @@
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/intrinsics_gen.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/vt_gen.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/omp_gen.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/acc_gen.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/target_parser_gen.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/clang-tablegen-targets.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/IR_Graph.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/edit_cache.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/rebuild_cache.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/list_install_components.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/install.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/install/local.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/install/strip.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/IR_Graph_autogen_timestamp_deps.dir
+/home/chakrak/ws/src/cpp/IR_Graph/build/CMakeFiles/IR_Graph_autogen.dir

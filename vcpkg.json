@@ -1,0 +1,13 @@
+{
+  "name": "ir-graph",
+  "version": "1.0.0",
+  "description": "C/C++ include dependency graph visualizer",
+  "dependencies": [
+    "spdlog",
+    {
+      "name": "graphviz",
+      "default-features": false,
+      "features": ["cgraph", "gvc"]
+    }
+  ]
+}

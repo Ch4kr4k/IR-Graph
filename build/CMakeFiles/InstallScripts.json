@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/chakrak/ws/src/cpp/IR_Graph/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
