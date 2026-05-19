@@ -97,7 +97,7 @@ Open **PowerShell** in the repository root and run:
 
 This script will:
 
-* use an MSVC Visual Studio generator,
+* use a Visual Studio MSVC generator,
 * bootstrap **vcpkg** automatically if missing,
 * auto-detect Qt6 MSVC kit and LLVM/libclang (or you can pass paths manually),
 * configure with `win_cmake.cmake`,

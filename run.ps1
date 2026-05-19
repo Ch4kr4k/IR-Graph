@@ -114,10 +114,7 @@ $Generator = ""
 $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
 if (Test-Path $vswhere) {
     $installationVersion = & $vswhere -latest -property installationVersion
-    if ($LASTEXITCODE -ne 0) {
-        Warn "vswhere failed to detect Visual Studio version; attempting Visual Studio 17 2022 fallback."
-    }
-    elseif ([string]::IsNullOrWhiteSpace($installationVersion)) {
+    if ([string]::IsNullOrWhiteSpace($installationVersion)) {
         Warn "vswhere returned no installationVersion; attempting Visual Studio 17 2022 fallback."
     }
     else {
