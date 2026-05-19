@@ -168,4 +168,3 @@ if ($Run) {
     Write-Host "or" -ForegroundColor White
     Write-Host "  & `"$exePath`"" -ForegroundColor Gray
 }
-
