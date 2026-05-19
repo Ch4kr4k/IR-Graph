@@ -113,12 +113,15 @@ Ok "LLVM: $LLVMPath"
 $Generator = ""
 $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
 if (Test-Path $vswhere) {
-    $vsYear = & $vswhere -latest -property catalog_productLineVersion
+    $installationVersion = & $vswhere -latest -property installationVersion
     if ($LASTEXITCODE -ne 0) {
         Warn "vswhere failed to detect Visual Studio version; using default generator fallback."
     }
-    if ($vsYear -eq "2022") { $Generator = "Visual Studio 17 2022" }
-    elseif ($vsYear -eq "2019") { $Generator = "Visual Studio 16 2019" }
+    elseif ($installationVersion) {
+        $majorVersion = ($installationVersion -split '\.')[0]
+        if ($majorVersion -eq "17") { $Generator = "Visual Studio 17 2022" }
+        elseif ($majorVersion -eq "16") { $Generator = "Visual Studio 16 2019" }
+    }
 }
 if (-not $Generator) { $Generator = "Visual Studio 17 2022" }
 Info "Generator: $Generator"
