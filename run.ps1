@@ -115,9 +115,12 @@ $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.e
 if (Test-Path $vswhere) {
     $installationVersion = & $vswhere -latest -property installationVersion
     if ($LASTEXITCODE -ne 0) {
-        Warn "vswhere failed to detect Visual Studio version; using default generator fallback."
+        Warn "vswhere failed to detect Visual Studio version; attempting Visual Studio 17 2022 fallback."
     }
-    elseif ($installationVersion) {
+    elseif ([string]::IsNullOrWhiteSpace($installationVersion)) {
+        Warn "vswhere returned no installationVersion; attempting Visual Studio 17 2022 fallback."
+    }
+    else {
         $majorVersion = ($installationVersion -split '\.')[0]
         if ($majorVersion -eq "17") { $Generator = "Visual Studio 17 2022" }
         elseif ($majorVersion -eq "16") { $Generator = "Visual Studio 16 2019" }
