@@ -113,7 +113,10 @@ Ok "LLVM: $LLVMPath"
 $Generator = ""
 $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
 if (Test-Path $vswhere) {
-    $vsYear = & $vswhere -latest -property catalog_productLineVersion 2>$null
+    $vsYear = & $vswhere -latest -property catalog_productLineVersion
+    if ($LASTEXITCODE -ne 0) {
+        Warn "vswhere failed to detect Visual Studio version; using default generator fallback."
+    }
     if ($vsYear -eq "2022") { $Generator = "Visual Studio 17 2022" }
     elseif ($vsYear -eq "2019") { $Generator = "Visual Studio 16 2019" }
 }
@@ -149,11 +152,17 @@ Info "Building ($BuildType)..."
 & cmake --build $buildDir --config $BuildType --parallel
 if ($LASTEXITCODE -ne 0) { Fatal "Build failed (exit $LASTEXITCODE)" }
 
-$exePath = Join-Path $buildDir "$BuildType\IR_Graph.exe"
-if (-not (Test-Path $exePath)) {
-    $exePath = Join-Path $buildDir "IR_Graph.exe"
+$exeCandidates = @(
+    (Join-Path $buildDir "$BuildType\IR_Graph.exe"),
+    (Join-Path $buildDir "IR_Graph.exe")
+)
+$exePath = $exeCandidates | Where-Object { Test-Path $_ } | Select-Object -First 1
+if (-not $exePath) {
+    $foundExe = Get-ChildItem -Path $buildDir -Filter "IR_Graph.exe" -File -Recurse -ErrorAction SilentlyContinue |
+        Select-Object -First 1
+    if ($foundExe) { $exePath = $foundExe.FullName }
 }
-if (-not (Test-Path $exePath)) {
+if (-not $exePath -or -not (Test-Path $exePath)) {
     Fatal "Build completed but IR_Graph.exe was not found."
 }
 Ok "Build complete: $exePath"
