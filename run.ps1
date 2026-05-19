@@ -83,7 +83,7 @@ if (-not $QtPath) {
     }
 }
 if (-not $QtPath) {
-    Fatal "Qt6 MSVC kit not found. Install Qt and pass -QtPath 'C:\Qt\6.x.x\msvc2022_64'"
+    Fatal "Qt6 MSVC kit not found. Install Qt and pass -QtPath 'C:\Qt\6.6.3\msvc2022_64'"
 }
 Ok "Qt6: $QtPath"
 
@@ -115,7 +115,7 @@ $vswhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.e
 if (Test-Path $vswhere) {
     $installationVersion = & $vswhere -latest -property installationVersion
     if ([string]::IsNullOrWhiteSpace($installationVersion)) {
-        Warn "vswhere returned no installationVersion; attempting Visual Studio 17 2022 fallback."
+        Warn "vswhere returned no installationVersion; defaulting to Visual Studio 17 2022."
     }
     else {
         $majorVersion = ($installationVersion -split '\.')[0]

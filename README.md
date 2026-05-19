@@ -113,7 +113,7 @@ Useful options:
 
 ```powershell
 .\run.ps1 -BuildType Debug -Clean
-.\run.ps1 -QtPath "C:\Qt\6.7.0\msvc2022_64" -LLVMPath "C:\Program Files\LLVM"
+.\run.ps1 -QtPath "C:\Qt\6.6.3\msvc2022_64" -LLVMPath "C:\Program Files\LLVM"
 ```
 
 ### Manual CMake command (uses `win_cmake.cmake`)
@@ -123,7 +123,7 @@ cmake -S . -B build-windows-Release `
   -G "Visual Studio 17 2022" -A x64 `
   -C .\win_cmake.cmake `
   -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake" `
-  -DCMAKE_PREFIX_PATH="C:\Qt\6.7.0\msvc2022_64" `
+  -DCMAKE_PREFIX_PATH="C:\Qt\6.6.3\msvc2022_64" `
   -DLLVM_DIR="C:\Program Files\LLVM\lib\cmake\llvm" `
   -DClang_DIR="C:\Program Files\LLVM\lib\cmake\clang"
 
