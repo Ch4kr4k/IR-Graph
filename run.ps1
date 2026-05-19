@@ -83,7 +83,7 @@ if (-not $QtPath) {
     }
 }
 if (-not $QtPath) {
-    Fatal "Qt6 MSVC kit not found. Install Qt and pass -QtPath 'C:\Qt\6.6.3\msvc2022_64'"
+    Fatal "Qt6 MSVC kit not found. Install Qt and pass -QtPath 'C:\Qt\<version>\msvc2022_64'"
 }
 Ok "Qt6: $QtPath"
 
@@ -105,7 +105,7 @@ if (-not $LLVMPath) {
     if ($llvmCandidates.Count -gt 0) { $LLVMPath = $llvmCandidates[0] }
 }
 if (-not $LLVMPath) {
-    Fatal "LLVM not found. Install LLVM and pass -LLVMPath 'C:\Program Files\LLVM'"
+    Fatal "LLVM not found. Install LLVM from https://releases.llvm.org/ and pass -LLVMPath 'C:\Program Files\LLVM'"
 }
 Ok "LLVM: $LLVMPath"
 
