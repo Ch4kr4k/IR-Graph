@@ -85,6 +85,53 @@ cmake --build build-debug
 
 ---
 
+## Build Instructions (Windows + MSVC)
+
+### Quick start (recommended)
+
+Open **PowerShell** in the repository root and run:
+
+```powershell
+.\run.ps1
+```
+
+This script will:
+
+* use an MSVC Visual Studio generator,
+* bootstrap **vcpkg** automatically if missing,
+* auto-detect Qt6 MSVC kit and LLVM/libclang (or you can pass paths manually),
+* configure with `win_cmake.cmake`,
+* build the app.
+
+To build and run immediately:
+
+```powershell
+.\run.ps1 -Run
+```
+
+Useful options:
+
+```powershell
+.\run.ps1 -BuildType Debug -Clean
+.\run.ps1 -QtPath "C:\Qt\6.7.0\msvc2022_64" -LLVMPath "C:\Program Files\LLVM"
+```
+
+### Manual CMake command (uses `win_cmake.cmake`)
+
+```powershell
+cmake -S . -B build-windows-Release `
+  -G "Visual Studio 17 2022" -A x64 `
+  -C .\win_cmake.cmake `
+  -DCMAKE_TOOLCHAIN_FILE="$env:VCPKG_ROOT\scripts\buildsystems\vcpkg.cmake" `
+  -DCMAKE_PREFIX_PATH="C:\Qt\6.7.0\msvc2022_64" `
+  -DLLVM_DIR="C:\Program Files\LLVM\lib\cmake\llvm" `
+  -DClang_DIR="C:\Program Files\LLVM\lib\cmake\clang"
+
+cmake --build build-windows-Release --config Release --parallel
+```
+
+---
+
 ## Usage
 
 1. **Open Directory** — File → Open Directory (or toolbar button). IR_Graph
